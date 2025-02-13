@@ -12,89 +12,78 @@ var languages = {
 var l10n = {
     "en": {
         "draftEdition": "Draft edition",
-        "draftNotice": "This edition of the book is a work in progress.<br> Please\
-            create <a href='https://github.com/oreilly/couchdb-guide/pulls'>a \
-            pull request</a> or <a href='http://github.com/oreilly/couchdb-guide/issues'>\
+        "draftNotice": "This edition of the guide is a work in progress.<br> Please\
+            create <a href='https://github.com/fireproof-storage/fireproof-guide/pulls'>a \
+            pull request</a> or <a href='https://github.com/fireproof-storage/fireproof-guide/issues'>\
             report an issue</a> for any corrections or suggestions you may have.",
         "edition": "Edition",
-        "editionNotice": "This is an outdated edition of the book. Please use\
+        "editionNotice": "This is an outdated edition of the guide. Please use\
             the <a href='%s'>latest edition</a> for more up-to-date\
             information.",
-        "footer": "An <a href='http://oreilly.com/'>O’Reilly</a> book\
-            about <a href='http://couchdb.apache.org/'>CouchDB</a> by\
-            <a href='https://twitter.com/jchris'>J. Chris Anderson</a>,\
-            <a href='https://twitter.com/janl'>Jan Lehnardt</a> and\
-            <a href='https://twitter.com/nslater'>Noah Slater</a>.",
+        "footer": "A comprehensive guide to <a href='https://fireproof.storage/'>Fireproof</a> by\
+            <a href='https://twitter.com/jchris'>J. Chris Anderson</a> and the Fireproof community.\
+            <br>Join us on <a href='https://discord.gg/mv3CmqjQhd'>Discord</a> for discussions and support.",
         "home": "Home",
         "nextPage": "Next Page",
         "prevPage": "Previous Page",
         "search": "Search",
-        "title": "CouchDB <span>The Definitive Guide</span>",
+        "title": "Fireproof <span>The Definitive Guide</span>",
     },
     "de": {
         "draftEdition": "Entwurf",
-        "draftNotice": "Diese Ausgabe des Buchs ist noch in Arbeit. Bitte\
-            <a href='http://github.com/oreilly/couchdb-guide/issues'>sagen sie\
-            uns</a> wo Fehler sind und was wir besser machen können.",
+        "draftNotice": "Diese Ausgabe der Anleitung ist noch in Arbeit.<br> Bitte\
+            erstellen Sie <a href='https://github.com/fireproof-storage/fireproof-guide/pulls'>einen \
+            Pull Request</a> oder <a href='https://github.com/fireproof-storage/fireproof-guide/issues'>\
+            melden Sie ein Problem</a> für Korrekturen oder Vorschläge.",
         "edition": "Ausgabe",
-        "editionNotice": "Dies ist eine alte Ausgabe des Buchs. Bitte benutzen\
-            sie die <a href='%s'>aktuelle Ausgabe</a> für aktuellere\
+        "editionNotice": "Dies ist eine veraltete Ausgabe der Anleitung. Bitte nutzen\
+            Sie die <a href='%s'>aktuelle Ausgabe</a> für aktuellere\
             Informationen.",
-        "footer": "Ein <a href='http://oreilly.com/'>O’Reilly</a> Buch\
-            über <a href='http://couchdb.apache.org/'>CouchDB</a> von\
-            <a href='http://jchrisa.net/'>J. Chris Anderson</a>,\
-            <a href='http://jan.prima.de/'>Jan Lehnardt</a> und\
-            <a href='http://nslater.org/'>Noah Slater</a>. Deutsche\
-            Übersetzung von <a href='http://go-left.com/'>Frank Schröder</a>.",
-        "home": "Anfang",
+        "footer": "Eine umfassende Anleitung zu <a href='https://fireproof.storage/'>Fireproof</a> von\
+            <a href='https://twitter.com/jchris'>J. Chris Anderson</a> und der Fireproof-Community.\
+            <br>Besuchen Sie uns auf <a href='https://discord.gg/mv3CmqjQhd'>Discord</a> für Diskussionen und Support.",
+        "home": "Startseite",
         "nextPage": "Nächste Seite",
         "prevPage": "Vorherige Seite",
         "search": "Suchen",
-        "title": "CouchDB <span>Die Definitive Referenz</span>",
+        "title": "Fireproof <span>Die Definitive Anleitung</span>",
     },
     "fr": {
-        "draftEdition": "Brouillon",
-        "draftNotice": "Cette publication est en cours d’élaboration. N’hésitez pas à\
-            <a href='http://github.com/oreilly/couchdb-guide/issues'>créer un\
-            ticket</a> pour toute correction ou suggestion qui vous vient à l’esprit.",
+        "draftEdition": "Version préliminaire",
+        "draftNotice": "Cette édition du guide est en cours d'élaboration.<br> Veuillez\
+            créer <a href='https://github.com/fireproof-storage/fireproof-guide/pulls'>une \
+            pull request</a> ou <a href='https://github.com/fireproof-storage/fireproof-guide/issues'>\
+            signaler un problème</a> pour toute correction ou suggestion.",
         "edition": "Édition",
-        "editionNotice": "Cette publication est désuète. Veuillez vous référer à\
-            là <a href='%s'>dernière édition</a> pour avoir des informations\
+        "editionNotice": "Ceci est une édition obsolète du guide. Veuillez utiliser\
+            la <a href='%s'>dernière édition</a> pour des informations\
             plus à jour.",
-        "footer": "Un livre <a href='http://oreilly.com/'>O’Reilly</a>\
-            traitant de <a href='http://couchdb.apache.org/'>CouchDB</a> écrit par\
-            <a href='http://jchrisa.net/'>J. Chris Anderson</a>,\
-            <a href='http://jan.prima.de/'>Jan Lehnardt</a> et\
-            <a href='http://nslater.org/'>Noah Slater</a> ;\
-	    traduit de l’anglais par\
-	    <a href='https://wiki.fsfe.org/Fellows/jil.larner'>Jil Larner</a>",
+        "footer": "Un guide complet de <a href='https://fireproof.storage/'>Fireproof</a> par\
+            <a href='https://twitter.com/jchris'>J. Chris Anderson</a> et la communauté Fireproof.\
+            <br>Rejoignez-nous sur <a href='https://discord.gg/mv3CmqjQhd'>Discord</a> pour les discussions et le support.",
         "home": "Accueil",
         "nextPage": "Page suivante",
         "prevPage": "Page précédente",
         "search": "Rechercher",
-        "title": "CouchDB <span>Le guide authentique</span>",
+        "title": "Fireproof <span>Le Guide Définitif</span>",
     },
     "es": {
         "draftEdition": "Borrador",
-        "draftNotice": "Esta edición del libro está todavía en proceso.<br>\
-            Por favor envía un <a href='https://github.com/oreilly/couchdb-guide/pulls'>\
-            pull request</a> o <a href='http://github.com/oreilly/couchdb-guide/issues'>\
-            reporta un issue</a> con correcciones o sugerencias.",
+        "draftNotice": "Esta edición de la guía está en desarrollo.<br> Por favor\
+            crea <a href='https://github.com/fireproof-storage/fireproof-guide/pulls'>un \
+            pull request</a> o <a href='https://github.com/fireproof-storage/fireproof-guide/issues'>\
+            reporta un problema</a> para cualquier corrección o sugerencia que tengas.",
         "edition": "Edición",
         "editionNotice": "Esta edición puede no estar actualizada. Visita la\
             <a href='%s'>edición actualizada</a> para obtener más información.",
-        "footer": "Un libro de <a href='http://oreilly.com/'>O’Reilly</a>\
-            sobre <a href='http://couchdb.apache.org/'>CouchDB</a> escrito por\
-            <a href='http://www.couchone.com/'>J. Chris Anderson</a>,\
-            <a href='http://www.couchone.com/'>Jan Lehnardt</a> y\
-            <a href='http://nslater.org/'>Noah Slater</a>.\
-            Traducido del inglés por\
-            <a href='http://lupomontero.com/'>Lupo Montero</a>.",
+        "footer": "Una guía completa de <a href='https://fireproof.storage/'>Fireproof</a> por\
+            <a href='https://twitter.com/jchris'>J. Chris Anderson</a> y la comunidad Fireproof.\
+            <br>Únete a nosotros en <a href='https://discord.gg/mv3CmqjQhd'>Discord</a> para discusiones y soporte.",
         "home": "Inicio",
         "nextPage": "Página siguiente",
         "prevPage": "Página anterior",
         "search": "Buscar",
-        "title": "CouchDB <span>La Guía Definitiva</span>",
+        "title": "Fireproof <span>La Guía Definitiva</span>",
     }
 };
 
@@ -142,7 +131,7 @@ function get_header() {
         </h1>\
         <div class="search_box">\
           <form class="search" action="http://www.google.com/search">\
-            <input type="hidden" name="as_sitesearch" value="guide.couchdb.org">\
+            <input type="hidden" name="as_sitesearch" value="guide.fireproof.storage">\
             <input type="text" name="as_q" value="" class="search_field">\
             <input type="submit" value="'+l10n[lang].search+'" class="search_btn" />\
           </form>\
