@@ -13,3 +13,165 @@
 <h2 id="react-hooks">React Live Query and Document Hooks</h2>
 
 <p>Instant data-driven collaboration with React hooks.</p>
+
+<h3>Installation</h3>
+
+<p>The <code>use-fireproof</code> package provides both the core API and React hooks:</p>
+
+<pre><code>npm install use-fireproof</code></pre>
+
+<p>Or use with ESM.sh:</p>
+
+<pre><code>import { useFireproof } from "https://esm.sh/use-fireproof";</code></pre>
+
+<h3>Creating a Database</h3>
+
+<p>Initialize a Fireproof database using the <code>useFireproof</code> hook. Each database is identified by a string name, and you can have multiple databases per application:</p>
+
+<pre><code>import { useFireproof } from "use-fireproof";
+
+const { database, useLiveQuery, useDocument } = useFireproof("my-ledger");</code></pre>
+
+<h3>Working with Documents</h3>
+
+<p>The <code>useDocument</code> hook provides a React-friendly interface for creating and updating documents. Documents are JSON objects with an <code>_id</code> field that can be auto-generated or explicitly set.</p>
+
+<pre><code>const App = () => {
+  const { useDocument } = useFireproof("my-ledger");
+
+  const { doc, merge, submit } = useDocument({ text: "", timestamp: Date.now() });
+
+  const queryResult = useLiveQuery("timestamp", { descending: true });
+
+  return (
+    &lt;div&gt;
+      &lt;form onSubmit={submit}&gt;
+        &lt;input
+          value={doc.text}
+          onChange={(e) => merge({ text: e.target.value })}
+          placeholder="New document"
+        /&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+      &lt;/form&gt;
+
+      &lt;h3&gt;Recent Documents&lt;/h3&gt;
+      &lt;ul&gt;
+        {queryResult.docs.map((doc) => (
+          &lt;li key={doc._id}&gt;
+            {doc.text} — {new Date(doc.timestamp).toLocaleString()}
+          &lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+<h4>Document Hook Methods</h4>
+
+<p>The <code>useDocument</code> hook provides several methods for managing document state:</p>
+
+<ul>
+  <li><code>merge(updates)</code>: Update the document with new fields</li>
+  <li><code>save()</code>: Save the current document state</li>
+  <li><code>reset()</code>: Reset to initial state</li>
+  <li><code>submit(e)</code>: Handles form submission by preventing default, saving, and resetting</li>
+</ul>
+
+<h3>Live Queries</h3>
+
+<p>The <code>useLiveQuery</code> hook provides real-time data querying capabilities. Queries are based on indexes and automatically update when the underlying data changes.</p>
+
+<h4>Basic Queries</h4>
+
+<pre><code>// Query by timestamp, most recent first
+const queryResult = useLiveQuery("timestamp", { 
+  descending: true, 
+  limit: 5 
+});
+
+// Query with specific key
+const queryResult = useLiveQuery("agentId", { 
+  descending: true, 
+  limit: 5, 
+  key: "llm-agent-1" 
+});</code></pre>
+
+<h4>Complex Queries</h4>
+
+<p>For more complex queries, you can use a function to define the index:</p>
+
+<pre><code>// Group and filter documents
+const queryResult = useLiveQuery(
+  (doc) => [doc.agent, doc.timestamp], 
+  { descending: true, limit: 5, prefix: ["llm-agent-1"] }
+);</code></pre>
+
+<h4>Date-based Queries</h4>
+
+<pre><code>const queryResult = useLiveQuery(
+  (doc) => [doc.date.getFullYear(), doc.date.getMonth(), doc.date.getDate()],
+  { descending: true, limit: 5, prefix: [2024, 11] }
+);</code></pre>
+
+<h3>Sortable Lists</h3>
+
+<p>Implement sortable lists using position-based queries:</p>
+
+<pre><code>function App() {
+  const { database, useLiveQuery } = useFireproof("my-ledger");
+  
+  // Initialize list with evenly spaced positions
+  async function initializeList() {
+    await database.put({ list: "xyz", position: 1000 });
+    await database.put({ list: "xyz", position: 2000 });
+    await database.put({ list: "xyz", position: 3000 });
+  }
+  
+  // Query items sorted by position
+  const queryResult = useLiveQuery(
+    (doc) => [doc.list, doc.position], 
+    { ascending: true, prefix: ["xyz"] }
+  );
+
+  // Insert between existing items
+  async function insertBetween(beforeDoc, afterDoc) {
+    const newPosition = (beforeDoc.position + afterDoc.position) / 2;
+    await database.put({ 
+      list: "xyz", 
+      position: newPosition 
+    });
+  }
+
+  return (
+    &lt;div&gt;
+      &lt;h3&gt;Sorted List&lt;/h3&gt;
+      &lt;ul&gt;
+        {queryResult.docs.map(doc => (
+          &lt;li key={doc._id}&gt;
+            {doc._id}: position {doc.position}
+          &lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+<h3>Real-time Updates</h3>
+
+<p>All queries automatically update in real-time when the underlying data changes:</p>
+
+<pre><code>function AgentUI() {
+  const { useLiveQuery } = useFireproof("my-ledger");
+  const conversation = useLiveQuery("timestamp", { 
+    descending: true, 
+    limit: 10 
+  });
+
+  return (
+    &lt;ul&gt;
+      {conversation.docs.map(log => (
+        &lt;li key={log._id}&gt;{log.text}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code></pre>
