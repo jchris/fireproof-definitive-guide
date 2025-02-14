@@ -4,8 +4,120 @@
 
 <link rel="stylesheet" href="../style.css">
 
+<link rel="next" href="why.html">
+
 <script src="../script.js"></script>
 
-<h2>AI Code Generation</h2>
+<h2 id="codegen">AI Code Generation</h2>
 
-<p>Use any model or codegen tool to build Fireproof apps through natural language - from idea to working application in minutes.</p>
+<p>Leverage any AI model or code generation tool to rapidly develop Fireproof applications from concept to deployment in a matter of minutes. With minimal effort, transform your ideas into safe, robust database applications.</p>
+
+<h3>The Rise of AI-Powered Web Apps</h3>
+
+<p>As AI code generation tools become more sophisticated, they're increasingly capable of creating complete web applications from natural language descriptions. The key to success lies in combining these AI capabilities with robust, well-designed libraries and frameworks. Fireproof is particularly well-suited for AI-generated applications because it provides a simple, powerful database that can be easily integrated by AI coding assistants.</p>
+
+<h3>A Practical Example: Todo List Application</h3>
+
+<p>Let's explore how Fireproof works with AI-generated code through a practical todo list application. This example demonstrates core Fireproof features while remaining simple enough to be generated reliably by AI tools.</p>
+
+<pre><code class="language-javascript">
+import React from "react";
+import { useFireproof } from "use-fireproof";
+
+function App() {
+  const { useLiveQuery, useDocument, database } = useFireproof("todo-list-db");
+
+  const {
+    doc: newTodo,
+    merge: mergeNewTodo,
+    submit: submitNewTodo
+  } = useDocument({
+    todo: "",
+    completed: false,
+    createdAt: Date.now()
+  });
+
+  const { docs: notes } = useLiveQuery("type", { 
+    key: "note",
+    descending: true 
+  });
+
+  const handleInputChange = (e) => {
+    mergeNewTodo({ todo: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submitNewTodo();
+  };
+
+  return (
+    <div className="max-w-md mx-auto p-4">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          onChange={handleInputChange}
+          value={newTodo.todo}
+        />
+      </form>
+      <ul>
+        {notes.map((doc) => (
+          <li key={doc._id}>
+            <input
+              type="checkbox"
+              checked={doc.completed}
+              onChange={() => database.put({ ...doc, completed: !doc.completed })}
+            />
+            <span>{doc.todo}</span>
+            <button onClick={() => database.del(doc._id)}>
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+</code></pre>
+
+<h3>Key Features for AI Generation</h3>
+
+<p>This example highlights several Fireproof features that make it ideal for AI-generated applications:</p>
+
+<ul>
+  <li><strong>Hooks-based API</strong>: The <code>useFireproof</code>, <code>useLiveQuery</code>, and <code>useDocument</code> hooks provide a declarative interface that's easy for AI to understand and generate correctly.</li>
+  <li><strong>Automatic State Management</strong>: Fireproof handles all the database state automatically, reducing the complexity of the generated code.</li>
+  <li><strong>Real-time Updates</strong>: The <code>useLiveQuery</code> hook automatically updates the UI when data changes, without requiring complex event handling code.</li>
+</ul>
+
+<h3>Backend Event Handling and Database Subscriptions</h3>
+
+<p>Beyond the basic application, Fireproof also supports advanced features like database subscriptions. This empowers backend developers to handle real-time updates and events efficiently. Here's how you can listen for changes and react to them:</p>
+
+<pre><code class="language-javascript">
+import { fireproof } from "@fireproof/core";
+
+const database = fireproof("todo-list-db");
+
+database.subscribe((changes) => {
+  console.log("Recent changes:", changes);
+  changes.forEach((change) => {
+    if (change.completed) {
+      // Handle completed todos
+      notifyUser(change);
+    }
+  });
+}, true);
+</code></pre>
+
+<h3>Why This Works Well with AI</h3>
+
+<p>Modern AI code generation tools excel at creating web applications because:</p>
+
+<ul>
+  <li>They have been trained on vast amounts of JavaScript and TypeScript code</li>
+  <li>Web frameworks provide a consistent environment for testing and running generated code</li>
+  <li>Well-designed libraries (like Fireproof) make it easy to add complex features through simple APIs</li>
+</ul>
+
+<p>By combining Fireproof's intuitive API with AI code generation, developers can rapidly prototype and build full-featured web applications. The database "just works" without requiring complex setup or configuration, allowing AI tools to focus on generating business logic and user interfaces.</p>

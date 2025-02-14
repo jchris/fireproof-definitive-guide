@@ -4,8 +4,58 @@
 
 <link rel="stylesheet" href="../style.css">
 
+<link rel="prev" href="why.html">
+
+<link rel="next" href="sharing.html">
+
 <script src="../script.js"></script>
 
-<h2>Reactive Architecture</h2>
+<h2 id="reactive">Reactive Architecture</h2>
 
-<p>Understanding live ledgers and reactive data flow - the foundation the Fireproof advantage.</p>
+<p>Understanding live ledgers and reactive data flow - the foundation of the Fireproof advantage.</p>
+
+<h3>Reactive Development Made Easy</h3>
+
+<p>At its core, reactive programming streamlines application development by automatically synchronizing the user interface with changes in the underlying data state. Instead of manually managing UI updates, developers can focus on building features while the framework handles the synchronization.</p>
+
+<p>If you've worked with React, you're already familiar with reactive development. When a component's state changes, React automatically re-renders to reflect the new state. This pattern is fundamental to modern web development:</p>
+
+<pre><code>// React example
+setState({ greeting: 'Hello World' }); // UI updates automatically</code></pre>
+
+<h3>Live Ledgers: The Next Evolution</h3>
+
+<p>Fireproof takes this reactive paradigm further with live ledgers. A live ledger serves as your application's state manager, providing a simple yet powerful way to interact with your data from anywhere in your application.</p>
+
+<p>The core of Fireproof's reactivity is the ledger subscription system. In its simplest form:</p>
+
+<pre><code>const unsub = ledger.subscribe((changes) => {
+  // update UI
+}, true)</code></pre>
+
+<p>For React applications, this functionality is wrapped in intuitive hooks like <code>useLiveQuery</code> and <code>useDocument</code>:</p>
+
+<pre><code>// In your React component
+const data = useLiveQuery('greeting');</code></pre>
+
+<h3>Beyond Local State</h3>
+
+<p>While keeping state local to the UI is crucial for responsiveness, modern applications often need to share state across multiple users and systems. Live ledgers excel here by providing:</p>
+
+<ul>
+  <li>Local-first operation for immediate responsiveness</li>
+  <li>Automatic synchronization with cloud replicas</li>
+  <li>Seamless collaboration features</li>
+  <li>Integration with backend processes and APIs</li>
+</ul>
+
+<p>This architecture is particularly powerful for applications like:</p>
+
+<ul>
+  <li>On-site experience apps (ticketing, scheduling)</li>
+  <li>Team data entry systems (inventory, supply chain)</li>
+  <li>Point-of-sale systems</li>
+  <li>Multi-user AI workflows with provenance tracking</li>
+</ul>
+
+<p>By using live ledgers as the foundation of your application's state management, you get the benefits of reactive programming with the added power of seamless data synchronization and collaboration.</p>
